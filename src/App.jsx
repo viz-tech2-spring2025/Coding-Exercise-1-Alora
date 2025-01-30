@@ -8,9 +8,10 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    d3.csv('/data/forests.csv',  d3.autoType)
+    d3.csv('/data/urban_population.csv',  d3.autoType)
       .then((loadedData) => {
         console.log('Data loaded:', loadedData);
+        console.log(loadedData[0])
         setData(loadedData);
       })
       .catch((error) => {
