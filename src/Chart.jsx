@@ -55,7 +55,7 @@ export function Chart({ data }) {
 
   return (
     <div>
-      <p>Top 30 Countries with Most Urban Population</p>
+      <p>Top 30 Countries with Most Urban Population(%)</p>
       <svg style={{border:"0px solid black"}} width={width} height={height}>
         {/* Bars */}
         {numericData.map((d) => (
