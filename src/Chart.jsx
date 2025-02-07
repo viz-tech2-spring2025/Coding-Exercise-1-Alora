@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { useState } from "react";
 
 export function Chart({ data }) {
   const marginLeft = 200;
@@ -10,6 +11,11 @@ export function Chart({ data }) {
 
   const heightBound = height - marginTop - marginBottom;
   const widthBound = width - marginLeft - marginRight;
+
+  // State for tracking hovered bar
+  const [hovered, setHovered] = useState(null);
+
+  const [rectangleHovered, setReactangleHovered] = useState(null)
 
   const numericData = data
     .filter((d) => d["2022"] != null)
@@ -67,8 +73,10 @@ export function Chart({ data }) {
             height={yScale.bandwidth()}
             opacity={0.7}
             fill="#FEE41F"
-            fillOpacity={0.9}
+            fillOpacity={hovered && hovered !== d.country ? 0.3 : 1}
             strokeWidth={1}
+            onMouseEnter={() => setHovered(d.country)}
+            onMouseLeave={() => setHovered(null)}
           />
         ))}
 
